@@ -1,0 +1,96 @@
+<div class="login-page d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+
+      <!-- Login Card -->
+      <div class="col-lg-5 col-md-7 col-sm-10">
+        <div class="login-card">
+
+          <div class="text-center mb-4">
+            <div class="login-icon">
+              <i class="fa-solid fa-circle-user"></i>
+            </div>
+
+            <h2 class="login-title">Welcome Back</h2>
+
+            <p class="login-subtitle">
+              Sign in to continue to Employee Management
+            </p>
+          </div>
+
+          <form>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">
+                Email Address
+              </label>
+
+              <div class="input-group custom-input">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-envelope"></i>
+                </span>
+
+                <input
+                  type="email"
+                  class="form-control"[(ngModel)]="loginobj.email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your email"
+                />
+              </div>
+            </div>
+
+            <!-- Contact / Password -->
+            <div class="mb-2">
+              <label for="contact" class="form-label">
+                Password
+              </label>
+
+              <div class="input-group custom-input">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+
+                <input
+                  type="password"[(ngModel)]="loginobj.contact"
+                  name="contact"
+                  class="form-control"
+                  id="contact"
+                  placeholder="Enter your contact number"
+                />
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="remember"
+                />
+
+                <label class="form-check-label" for="remember">
+                  Remember me
+                </label>
+              </div>
+
+              <a href="#" class="forgot-link">
+                Forgot password?
+              </a>
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" (click)="onLogin()" class="btn login-btn w-100">
+              <span>Login</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

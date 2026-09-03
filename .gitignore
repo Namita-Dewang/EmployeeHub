@@ -1,0 +1,58 @@
+# ---------------------------------------------
+# .NET / ASP.NET Core (employee.api)
+# ---------------------------------------------
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+publish/
+*.dll
+*.pdb
+
+# Visual Studio
+.vs/
+*.vsidx
+*.futdcache.v2
+*.dtbcache.v2
+
+# Rider / VS Code
+.idea/
+*.DotSettings.user
+
+# ---------------------------------------------
+# Node / Angular (frontend)
+# ---------------------------------------------
+node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/tmp/
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Testing / coverage
+coverage/
+*.lcov
+
+# ---------------------------------------------
+# Environment / secrets
+# ---------------------------------------------
+*.env
+.env.local
+appsettings.*.local.json
+
+# Claude Code local (per-machine) settings
+.claude/settings.local.json
+
+# ---------------------------------------------
+# OS files
+# ---------------------------------------------
+.DS_Store
+Thumbs.db

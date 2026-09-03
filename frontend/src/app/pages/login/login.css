@@ -1,0 +1,207 @@
+/* =============================================
+   LOGIN PAGE
+   ============================================= */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+  background: var(--ph-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative glow orbs */
+.login-page::before,
+.login-page::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+}
+
+.login-page::before {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  right: -80px;
+  background: rgba(230, 166, 93, .1);
+}
+
+.login-page::after {
+  width: 350px;
+  height: 350px;
+  bottom: -80px;
+  left: -60px;
+  background: rgba(46, 196, 160, .08);
+}
+
+/* ── Card ────────────────────────────── */
+.login-card {
+  background: var(--ph-surface);
+  padding: 48px 42px;
+  border-radius: var(--ph-radius-lg);
+  border: 1px solid var(--ph-border-2);
+  box-shadow: var(--ph-shadow);
+  animation: cardEnter .6s ease-out;
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  width: 100%;
+}
+
+/* ── Icon ────────────────────────────── */
+.login-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(230,166,93,.15), rgba(230,166,93,.06));
+  border: 1px solid rgba(230,166,93,.18);
+  color: var(--ph-accent);
+  border-radius: 50%;
+  font-size: 30px;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+/* ── Text ────────────────────────────── */
+.login-title {
+  color: var(--ph-text);
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.login-subtitle {
+  color: var(--ph-text-3);
+  font-size: 13.5px;
+  margin-bottom: 0;
+}
+
+/* ── Form elements ───────────────────── */
+.form-label {
+  color: var(--ph-text-2);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.custom-input .input-group-text {
+  background: var(--ph-surface-2);
+  border: 1px solid var(--ph-border-2);
+  border-right: none;
+  color: var(--ph-text-3);
+  border-radius: var(--ph-radius-sm) 0 0 var(--ph-radius-sm);
+}
+
+.custom-input .form-control {
+  background: var(--ph-surface-2);
+  border: 1px solid var(--ph-border-2);
+  border-left: none;
+  padding: 12px;
+  color: var(--ph-text);
+  box-shadow: none;
+  border-radius: 0 var(--ph-radius-sm) var(--ph-radius-sm) 0;
+}
+
+.custom-input .form-control::placeholder {
+  color: var(--ph-text-3);
+}
+
+.custom-input:focus-within .input-group-text,
+.custom-input:focus-within .form-control {
+  border-color: var(--ph-accent);
+  background: var(--ph-surface-3);
+}
+
+.custom-input:focus-within {
+  animation: inputFocus .3s ease-out forwards;
+}
+
+/* ── Checkbox ────────────────────────── */
+.form-check-label {
+  color: var(--ph-text-3);
+  font-size: 13px;
+}
+
+.form-check-input {
+  border-color: var(--ph-border-2);
+  background-color: var(--ph-surface-2);
+}
+
+.form-check-input:checked {
+  background-color: var(--ph-accent);
+  border-color: var(--ph-accent);
+  box-shadow: none;
+}
+
+/* ── Links ───────────────────────────── */
+.forgot-link {
+  color: var(--ph-accent);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color var(--ph-transition);
+}
+
+.forgot-link:hover {
+  color: var(--ph-accent-2);
+}
+
+/* ── Login button ────────────────────── */
+.login-btn {
+  background: linear-gradient(135deg, var(--ph-accent), #d4913e);
+  color: #111;
+  border: none;
+  border-radius: var(--ph-radius);
+  padding: 13px 20px;
+  font-weight: 700;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all .25s ease;
+  box-shadow: 0 4px 18px rgba(230,166,93,.2);
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, var(--ph-accent-2), var(--ph-accent));
+  color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(230,166,93,.35);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Animations ──────────────────────── */
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes inputFocus {
+  from { transform: scale(1); }
+  to   { transform: scale(1.01); }
+}
+
+/* ── Mobile ──────────────────────────── */
+@media (max-width: 576px) {
+  .login-card {
+    padding: 36px 24px;
+  }
+  .login-title {
+    font-size: 24px;
+  }
+}

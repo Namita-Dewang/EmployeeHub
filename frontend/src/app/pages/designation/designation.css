@@ -1,0 +1,39 @@
+@import '../department/department.css';
+
+.master-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  animation: fadeUp .45s ease-out both;
+}
+
+.master-panel,
+.master-table-panel {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  background: var(--ph-surface);
+  box-shadow: var(--ph-shadow-sm);
+}
+
+.master-table-panel {
+  margin-top: 20px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.item-name {
+  color: var(--ph-text);
+  font-weight: 600;
+}
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--ph-border);
+  color: var(--ph-text-3);
+  font-size: .8rem;
+}

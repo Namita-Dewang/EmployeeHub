@@ -1,0 +1,293 @@
+/* =============================================
+   DEPARTMENT PAGE — SHARED TABLE/FORM STYLES
+   ============================================= */
+
+.department-page {
+	max-width: 1180px;
+	margin: 0 auto;
+	animation: fadeUp .45s ease-out both;
+}
+
+/* ── Page heading ─────────────────────── */
+.page-heading,
+.panel-heading,
+.table-heading {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.section-kicker {
+	color: var(--ph-accent);
+	font-size: .68rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.page-heading h1 {
+	margin: 5px 0 4px;
+	color: var(--ph-text);
+	font-size: clamp(1.6rem, 3vw, 2.2rem);
+	font-weight: 800;
+}
+
+.page-heading p,
+.panel-heading p {
+	margin: 0;
+	color: var(--ph-text-3);
+}
+
+.record-count {
+	padding: 7px 14px;
+	border: 1px solid var(--ph-border-2);
+	border-radius: 20px;
+	background: var(--ph-surface);
+	color: var(--ph-text-2);
+	font-size: .76rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+/* ── Panels ───────────────────────────── */
+.department-panel,
+.department-table-panel {
+	margin-top: 24px;
+	padding: 24px;
+	border: 1px solid var(--ph-border);
+	border-radius: var(--ph-radius);
+	background: var(--ph-surface);
+	box-shadow: var(--ph-shadow-sm);
+}
+
+.panel-heading {
+	margin-bottom: 22px;
+}
+
+.panel-heading h2,
+.table-heading h2 {
+	margin: 0 0 4px;
+	color: var(--ph-text);
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.panel-heading p {
+	font-size: .82rem;
+}
+
+.panel-icon {
+	width: 42px;
+	height: 42px;
+	display: grid;
+	place-items: center;
+	border-radius: var(--ph-radius-sm);
+	background: rgba(230,166,93,.1);
+	color: var(--ph-accent);
+	font-size: 1.15rem;
+}
+
+/* ── Form tweaks ──────────────────────── */
+.form-label {
+	color: var(--ph-text-2);
+	font-size: .78rem;
+	font-weight: 600;
+}
+
+.active-check {
+	padding: .7rem 0 .7rem 1.7rem;
+}
+
+.active-check .form-check-label {
+	color: var(--ph-text-2);
+	font-size: .85rem;
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+.form-actions .btn {
+	min-width: 96px;
+	font-size: .82rem;
+}
+
+.form-actions i {
+	margin-right: 5px;
+}
+
+.alert {
+	margin: 18px 0 0;
+	font-size: .84rem;
+}
+
+/* ── Table panel ──────────────────────── */
+.department-table-panel {
+	margin-top: 20px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.table-heading {
+	align-items: center;
+	padding: 18px 24px;
+	border-bottom: 1px solid var(--ph-border);
+}
+
+.refresh-button {
+	width: 36px;
+	height: 36px;
+	border: 1px solid var(--ph-border-2);
+	border-radius: var(--ph-radius-sm);
+	background: var(--ph-surface-2);
+	color: var(--ph-text-3);
+	cursor: pointer;
+	transition: all var(--ph-transition);
+}
+
+.refresh-button:hover {
+	border-color: var(--ph-accent);
+	color: var(--ph-accent);
+	background: rgba(230,166,93,.08);
+}
+
+/* ── Table ────────────────────────────── */
+.table thead th {
+	border-bottom: 1px solid var(--ph-border);
+	background: var(--ph-surface-2);
+	color: var(--ph-text-3);
+	font-size: .68rem;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+.table td,
+.table th {
+	padding: 14px 24px;
+}
+
+.table tbody tr {
+	transition: background var(--ph-transition);
+}
+
+.table tbody tr:hover {
+	background: var(--ph-surface-2);
+}
+
+.table tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+.row-number {
+	color: var(--ph-text-3);
+	font-size: .78rem;
+	font-weight: 500;
+}
+
+.department-name {
+	color: var(--ph-text);
+	font-size: .88rem;
+	font-weight: 600;
+}
+
+/* ── Status badges ────────────────────── */
+.status-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 10px;
+	border-radius: 20px;
+	background: var(--ph-teal-dim);
+	color: var(--ph-teal);
+	font-size: .72rem;
+	font-weight: 700;
+}
+
+.status-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: currentColor;
+	box-shadow: 0 0 4px currentColor;
+}
+
+.status-inactive {
+	background: rgba(255,255,255,.05);
+	color: var(--ph-text-3);
+}
+
+/* ── Table actions ────────────────────── */
+.table-action {
+	width: auto;
+	height: 32px;
+	margin-left: 5px;
+	padding: 0 10px;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	background: transparent;
+	cursor: pointer;
+	font-size: .76rem;
+	font-weight: 600;
+	transition: all var(--ph-transition);
+}
+
+.table-action i {
+	margin-right: 5px;
+}
+
+.edit-action {
+	color: var(--ph-blue);
+}
+
+.edit-action:hover {
+	background: var(--ph-blue-dim);
+	border-color: rgba(76,164,232,.2);
+}
+
+.delete-action {
+	color: var(--ph-red);
+}
+
+.delete-action:hover {
+	background: var(--ph-red-dim);
+	border-color: rgba(232,100,90,.2);
+}
+
+/* ── Empty state ──────────────────────── */
+.empty-state {
+	padding: 48px 24px !important;
+	color: var(--ph-text-3);
+	text-align: center;
+}
+
+.empty-state i {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 1.5rem;
+	color: var(--ph-text-3);
+}
+
+@media (max-width: 767.98px) {
+	.department-panel,
+	.department-table-panel {
+		padding: 18px;
+	}
+
+	.form-actions {
+		justify-content: flex-start;
+	}
+
+	.table td,
+	.table th {
+		padding: 12px 16px;
+	}
+}
+
+@keyframes fadeUp {
+	from { opacity: 0; transform: translateY(16px); }
+	to   { opacity: 1; transform: translateY(0); }
+}

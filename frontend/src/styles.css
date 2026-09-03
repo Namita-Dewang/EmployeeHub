@@ -1,0 +1,175 @@
+/* =============================================
+   GLOBAL DESIGN SYSTEM — PeopleHub
+   Dark / Light Theme Support
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── DARK THEME (default) ────────────── */
+:root,
+[data-theme="dark"] {
+  --ph-bg:        #0f1923;
+  --ph-surface:   #162430;
+  --ph-surface-2: #1c2f3e;
+  --ph-surface-3: #243a4d;
+  --ph-border:    rgba(255,255,255,.07);
+  --ph-border-2:  rgba(255,255,255,.12);
+  --ph-text:      #e4ecf0;
+  --ph-text-2:    #93a8b4;
+  --ph-text-3:    #5e7a8a;
+  --ph-accent:    #e6a65d;
+  --ph-accent-2:  #f0c07c;
+  --ph-teal:      #2ec4a0;
+  --ph-teal-dim:  rgba(46,196,160,.12);
+  --ph-blue:      #4ca4e8;
+  --ph-blue-dim:  rgba(76,164,232,.12);
+  --ph-red:       #e8645a;
+  --ph-red-dim:   rgba(232,100,90,.10);
+  --ph-purple:    #a87be5;
+  --ph-purple-dim:rgba(168,123,229,.10);
+  --ph-radius:    12px;
+  --ph-radius-sm: 8px;
+  --ph-radius-lg: 16px;
+  --ph-shadow:    0 8px 32px rgba(0,0,0,.28);
+  --ph-shadow-sm: 0 2px 8px rgba(0,0,0,.18);
+  --ph-transition: 180ms ease;
+  --ph-input-bg:  var(--ph-surface);
+  --ph-input-focus-bg: var(--ph-surface-2);
+  --ph-sidebar-bg: var(--ph-surface);
+  --ph-topbar-bg:  var(--ph-surface);
+}
+
+/* ── LIGHT THEME ─────────────────────── */
+[data-theme="light"] {
+  --ph-bg:        #f4f6f8;
+  --ph-surface:   #ffffff;
+  --ph-surface-2: #f0f3f5;
+  --ph-surface-3: #e6eaed;
+  --ph-border:    rgba(0,0,0,.07);
+  --ph-border-2:  rgba(0,0,0,.12);
+  --ph-text:      #1a2b36;
+  --ph-text-2:    #536b78;
+  --ph-text-3:    #8a9da8;
+  --ph-accent:    #c88530;
+  --ph-accent-2:  #b07328;
+  --ph-teal:      #1a9a7e;
+  --ph-teal-dim:  rgba(26,154,126,.1);
+  --ph-blue:      #2b82c9;
+  --ph-blue-dim:  rgba(43,130,201,.08);
+  --ph-red:       #cf4c43;
+  --ph-red-dim:   rgba(207,76,67,.08);
+  --ph-purple:    #8558c4;
+  --ph-purple-dim:rgba(133,88,196,.08);
+  --ph-shadow:    0 8px 32px rgba(0,0,0,.08);
+  --ph-shadow-sm: 0 2px 8px rgba(0,0,0,.05);
+  --ph-input-bg:  #f8fafb;
+  --ph-input-focus-bg: #ffffff;
+  --ph-sidebar-bg: #122b39;
+  --ph-topbar-bg:  var(--ph-surface);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ph-text);
+  background: var(--ph-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+/* ── Scrollbar ─────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ph-surface-3); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ph-text-3); }
+
+/* ── Bootstrap overrides ───────────────── */
+.btn {
+  border-radius: var(--ph-radius-sm);
+  font-weight: 600;
+  font-size: .82rem;
+  letter-spacing: .01em;
+  transition: all var(--ph-transition);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--ph-accent), #d4913e);
+  border: none;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--ph-accent-2), var(--ph-accent));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(230,166,93,.3);
+  color: #fff;
+}
+.btn-primary:disabled { opacity: .45; transform: none; box-shadow: none; }
+
+.btn-outline-secondary {
+  border-color: var(--ph-border-2);
+  color: var(--ph-text-2);
+  background: transparent;
+}
+.btn-outline-secondary:hover {
+  background: var(--ph-surface-2);
+  border-color: var(--ph-text-3);
+  color: var(--ph-text);
+}
+
+.btn-link { color: var(--ph-text-2); text-decoration: none; }
+.btn-link:hover { color: var(--ph-accent); }
+
+.form-control, .form-select {
+  background: var(--ph-input-bg);
+  border: 1px solid var(--ph-border-2);
+  border-radius: var(--ph-radius-sm);
+  color: var(--ph-text);
+  padding: .62rem .85rem;
+  font-size: .85rem;
+  transition: border-color var(--ph-transition), box-shadow var(--ph-transition), background var(--ph-transition);
+}
+.form-control:focus, .form-select:focus {
+  background: var(--ph-input-focus-bg);
+  border-color: var(--ph-accent);
+  box-shadow: 0 0 0 3px rgba(230,166,93,.15);
+  color: var(--ph-text);
+}
+.form-control::placeholder { color: var(--ph-text-3); }
+.form-select option { background: var(--ph-surface); color: var(--ph-text); }
+
+.form-label {
+  color: var(--ph-text-2);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  margin-bottom: 6px;
+}
+
+.form-check-input { background-color: var(--ph-input-bg); border-color: var(--ph-border-2); }
+.form-check-input:checked { background-color: var(--ph-accent); border-color: var(--ph-accent); }
+.form-check-input:focus { box-shadow: 0 0 0 3px rgba(230,166,93,.18); }
+.form-check-label { color: var(--ph-text-2); font-size: .84rem; }
+
+.alert-danger {
+  background: var(--ph-red-dim);
+  border: 1px solid rgba(232,100,90,.25);
+  color: var(--ph-red);
+  border-radius: var(--ph-radius-sm);
+  font-size: .84rem;
+}
+
+.table { color: var(--ph-text); --bs-table-bg: transparent; }
+.table > :not(caption) > * > * { border-bottom-color: var(--ph-border); padding: 14px 22px; }
+
+/* Entrance animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-enter { animation: fadeUp .45s ease-out both; }

@@ -1,0 +1,93 @@
+<section class="master-page">
+  <div class="page-heading">
+    <div>
+      <span class="section-kicker">People</span>
+      <h1>Employees</h1>
+      <p>Browse and maintain the people in your organization.</p>
+    </div>
+    <a routerLink="/new-employee" class="btn btn-primary"
+      ><i class="fa-solid fa-user-plus"></i> New employee</a
+    >
+  </div>
+  @if (errorMessage) {
+    <div class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+  }
+  <div class="master-table-panel">
+    <div class="table-heading">
+      <h2>{{ totalRecords }} employees</h2>
+      <button
+        type="button"
+        class="refresh-button"
+        (click)="loadEmployees()"
+        aria-label="Refresh employees"
+      >
+        <i class="fa-solid fa-arrows-rotate"></i>
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Designation</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (employee of employees; track employee.employeeId; let row = $index) {
+            <tr>
+              <td class="row-number">{{ (pageNumber - 1) * 10 + row + 1 }}</td>
+              <td class="item-name">{{ employee.name }}</td>
+              <td>{{ employee.contact }}</td>
+              <td>{{ employee.email }}</td>
+              <td>{{ designationName(employee.designationId) }}</td>
+              <td class="text-end">
+                <button
+                  type="button"
+                  class="table-action edit-action"
+                  (click)="editEmployee(employee.employeeId)"
+                >
+                  <i class="fa-solid fa-pen"></i> Edit</button
+                ><button
+                  type="button"
+                  class="table-action delete-action"
+                  (click)="deleteEmployee(employee.employeeId)"
+                >
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="empty-state">
+                <i class="fa-regular fa-folder-open"></i
+                >{{ isLoading ? 'Loading employees...' : 'No employees found.' }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination-bar">
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary"
+        (click)="changePage(pageNumber - 1)"
+        [disabled]="pageNumber === 1"
+      >
+        Previous</button
+      ><span>Page {{ pageNumber }} of {{ totalPages }}</span
+      ><button
+        type="button"
+        class="btn btn-sm btn-outline-secondary"
+        (click)="changePage(pageNumber + 1)"
+        [disabled]="pageNumber === totalPages"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,107 @@
+<section class="department-page">
+	<div class="page-heading">
+		<div>
+			<span class="section-kicker">Administration</span>
+			<h1>Departments</h1>
+			<p>Manage the departments available across your organization.</p>
+		</div>
+		<span class="record-count">{{ departments.length }} total</span>
+	</div>
+
+	<div class="department-panel">
+		<div class="panel-heading">
+			<div>
+				<h2>{{ isEditing ? 'Edit department' : 'Add department' }}</h2>
+				<p>{{ isEditing ? 'Update the selected department.' : 'Create a department to organize employees.' }}</p>
+			</div>
+			<i class="fa-solid fa-building-circle-check panel-icon"></i>
+		</div>
+
+		<form #departmentForm="ngForm" (ngSubmit)="saveDepartment()" class="row g-3 align-items-end">
+			<div class="col-12 col-md-3">
+				<label for="departmentName" class="form-label">Department name</label>
+				<input
+					id="departmentName"
+					name="departmentName"
+					type="text"
+					class="form-control"
+					[(ngModel)]="department.departmentName"
+					required
+					maxlength="50"
+					placeholder="e.g. Human Resources"
+				/>
+			</div>
+
+			<div class="col-12 col-md-2">
+				<div class="form-check active-check">
+					<input id="isActive" name="isActive" type="checkbox" class="form-check-input" [(ngModel)]="department.isActive" />
+					<label for="isActive" class="form-check-label">Is active</label>
+				</div>
+			</div>
+
+			<div class="col-12 col-md-7 form-actions">
+				<button type="submit" class="btn btn-primary" [disabled]="departmentForm.invalid">
+					<i class="fa-solid" [class.fa-floppy-disk]="!isEditing" [class.fa-pen]="isEditing"></i>
+					{{ isEditing ? 'Update' : 'Save' }}
+				</button>
+				<button type="button" class="btn btn-outline-secondary" (click)="resetForm()">
+					<i class="fa-solid fa-rotate-left"></i> Reset
+				</button>
+			</div>
+		</form>
+	</div>
+
+	@if (errorMessage) {
+		<div class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+	}
+
+	<div class="department-table-panel">
+		<div class="table-heading">
+			<h2>Department list</h2>
+			<button type="button" class="refresh-button" (click)="loadDepartments()" aria-label="Refresh departments">
+				<i class="fa-solid fa-arrows-rotate"></i>
+			</button>
+		</div>
+
+		<div class="table-responsive">
+			<table class="table align-middle mb-0">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Department name</th>
+						<th scope="col">Status</th>
+						<th scope="col" class="text-end">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for (item of departments; track item.departmentId; let row = $index) {
+						<tr>
+							<td class="row-number">{{ row + 1 }}</td>
+							<td class="department-name">{{ item.departmentName }}</td>
+							<td>
+								<span class="status-badge" [class.status-inactive]="!item.isActive">
+									<span class="status-dot"></span>{{ item.isActive ? 'Active' : 'Inactive' }}
+								</span>
+							</td>
+							<td class="text-end">
+								<button type="button" class="table-action edit-action" (click)="editDepartment(item)" aria-label="Edit department">
+									<i class="fa-solid fa-pen"></i> Edit
+								</button>
+								<button type="button" class="table-action delete-action" (click)="deleteDepartment(item.departmentId)" aria-label="Delete department">
+									<i class="fa-solid fa-trash"></i> Delete
+								</button>
+							</td>
+						</tr>
+					} @empty {
+						<tr>
+							<td colspan="4" class="empty-state">
+								<i class="fa-regular fa-folder-open"></i>
+								<span>{{ isLoading ? 'Loading departments...' : 'No departments found.' }}</span>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>

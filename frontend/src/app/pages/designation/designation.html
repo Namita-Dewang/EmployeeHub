@@ -1,0 +1,118 @@
+<section class="master-page">
+  <div class="page-heading">
+    <div>
+      <span class="section-kicker">Administration</span>
+      <h1>Designations</h1>
+      <p>Define the roles employees can hold in each department.</p>
+    </div>
+    <span class="record-count">{{ designations.length }} total</span>
+  </div>
+  <div class="master-panel">
+    <div class="panel-heading">
+      <div>
+        <h2>{{ isEditing ? 'Edit designation' : 'Add designation' }}</h2>
+        <p>Keep role names tied to the right department.</p>
+      </div>
+      <i class="fa-solid fa-briefcase panel-icon"></i>
+    </div>
+    <form #designationForm="ngForm" (ngSubmit)="saveDesignation()" class="row g-3 align-items-end">
+      <div class="col-12 col-md-5">
+        <label for="designationName" class="form-label">Designation name</label
+        ><input
+          id="designationName"
+          name="designationName"
+          class="form-control"
+          [(ngModel)]="designation.designationName"
+          required
+          maxlength="50"
+          placeholder="e.g. Product manager"
+        />
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="departmentId" class="form-label">Department</label
+        ><select
+          id="departmentId"
+          name="departmentId"
+          class="form-select"
+          [(ngModel)]="designation.departmentId"
+          required
+        >
+          <option [ngValue]="0">Select department</option>
+          @for (department of departments; track department.departmentId) {
+            <option [ngValue]="department.departmentId">{{ department.departmentName }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-12 col-md-3 form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="designationForm.invalid || designation.departmentId === 0"
+        >
+          <i class="fa-solid fa-floppy-disk"></i> {{ isEditing ? 'Update' : 'Save' }}</button
+        ><button type="button" class="btn btn-outline-secondary" (click)="resetForm()">
+          <i class="fa-solid fa-rotate-left"></i> Reset
+        </button>
+      </div>
+    </form>
+  </div>
+  @if (errorMessage) {
+    <div class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+  }
+  <div class="master-table-panel">
+    <div class="table-heading">
+      <h2>Designation list</h2>
+      <button
+        type="button"
+        class="refresh-button"
+        (click)="loadDesignations()"
+        aria-label="Refresh designations"
+      >
+        <i class="fa-solid fa-arrows-rotate"></i>
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Designation</th>
+            <th>Department</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of designations; track item.designationId; let row = $index) {
+            <tr>
+              <td class="row-number">{{ row + 1 }}</td>
+              <td class="item-name">{{ item.designationName }}</td>
+              <td>{{ departmentName(item.departmentId) }}</td>
+              <td class="text-end">
+                <button
+                  type="button"
+                  class="table-action edit-action"
+                  (click)="editDesignation(item)"
+                >
+                  <i class="fa-solid fa-pen"></i> Edit</button
+                ><button
+                  type="button"
+                  class="table-action delete-action"
+                  (click)="deleteDesignation(item.designationId)"
+                >
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4" class="empty-state">
+                <i class="fa-regular fa-folder-open"></i
+                >{{ isLoading ? 'Loading designations...' : 'No designations found.' }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,130 @@
+<section class="master-page form-page">
+  <div class="page-heading">
+    <div>
+      <span class="section-kicker">People</span>
+      <h1>{{ isEditing ? 'Edit employee' : 'New employee' }}</h1>
+      <p>Capture the contact and organizational details for this employee.</p>
+    </div>
+  </div>
+  @if (errorMessage) {
+    <div class="alert alert-danger" role="alert">{{ errorMessage }}</div>
+  }
+  <div class="master-panel">
+    <form #employeeForm="ngForm" (ngSubmit)="saveEmployee()" class="row g-3">
+      <div class="col-12 col-md-6">
+        <label for="name" class="form-label">Full name</label
+        ><input
+          id="name"
+          name="name"
+          class="form-control"
+          [(ngModel)]="employee.name"
+          required
+          maxlength="50"
+        />
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="email" class="form-label">Email</label
+        ><input
+          id="email"
+          name="email"
+          type="email"
+          class="form-control"
+          [(ngModel)]="employee.email"
+          required
+        />
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="contact" class="form-label">Contact</label
+        ><input
+          id="contact"
+          name="contact"
+          class="form-control"
+          [(ngModel)]="employee.contact"
+          required
+          maxlength="50"
+        />
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="altContact" class="form-label">Alternate contact</label
+        ><input
+          id="altContact"
+          name="altContact"
+          class="form-control"
+          [(ngModel)]="employee.altContact"
+          maxlength="10"
+        />
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="designationId" class="form-label">Designation</label
+        ><select
+          id="designationId"
+          name="designationId"
+          class="form-select"
+          [(ngModel)]="employee.designationId"
+          required
+        >
+          <option [ngValue]="0" disabled>Select a designation</option>
+          @for (designation of designations; track designation.designationId) {
+            <option [ngValue]="designation.designationId">{{ designation.designationName }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="city" class="form-label">City</label
+        ><input
+          id="city"
+          name="city"
+          class="form-control"
+          [(ngModel)]="employee.city"
+          required
+          maxlength="50"
+        />
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="state" class="form-label">State</label
+        ><input
+          id="state"
+          name="state"
+          class="form-control"
+          [(ngModel)]="employee.state"
+          required
+          maxlength="50"
+        />
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="pincode" class="form-label">Pincode</label
+        ><input
+          id="pincode"
+          name="pincode"
+          class="form-control"
+          [(ngModel)]="employee.pincode"
+          required
+          maxlength="6"
+        />
+      </div>
+      <div class="col-12">
+        <label for="address" class="form-label">Address</label
+        ><textarea
+          id="address"
+          name="address"
+          class="form-control"
+          rows="3"
+          [(ngModel)]="employee.address"
+          required
+          maxlength="2000"
+        ></textarea>
+      </div>
+      <div class="col-12 form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="employeeForm.invalid || employee.designationId === 0 || isLoading"
+        >
+          <i class="fa-solid fa-floppy-disk"></i>
+          {{ isEditing ? 'Update employee' : 'Save employee' }}</button
+        ><button type="button" class="btn btn-outline-secondary" (click)="resetForm()">Reset</button
+        ><a routerLink="/employee-list" class="btn btn-link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</section>

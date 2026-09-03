@@ -1,0 +1,69 @@
+<div class="app-shell" [class.sidebar-open]="isSidebarOpen">
+	<aside class="sidebar" aria-label="Main navigation">
+		<div class="sidebar-brand">
+			<div class="brand-mark"><i class="fa-solid fa-users"></i></div>
+			<div>
+				<span class="brand-title">PeopleHub</span>
+				<span class="brand-caption">Employee management</span>
+			</div>
+			<button
+				type="button"
+				class="btn-close sidebar-close d-lg-none"
+				aria-label="Close navigation"
+				(click)="closeSidebar()"
+			></button>
+		</div>
+
+		<nav class="sidebar-nav">
+			<span class="nav-label">Workspace</span>
+			<a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeSidebar()">
+				<i class="fa-solid fa-chart-pie"></i><span>Dashboard</span>
+			</a>
+			<a routerLink="/employee-list" routerLinkActive="active" (click)="closeSidebar()">
+				<i class="fa-solid fa-id-card"></i><span>Employees</span>
+			</a>
+			<a routerLink="/department" routerLinkActive="active" (click)="closeSidebar()">
+				<i class="fa-solid fa-building"></i><span>Departments</span>
+			</a>
+			<a routerLink="/designation" routerLinkActive="active" (click)="closeSidebar()">
+				<i class="fa-solid fa-briefcase"></i><span>Designations</span>
+			</a>
+
+			<span class="nav-label nav-label-spaced">Actions</span>
+			<a routerLink="/new-employee" routerLinkActive="active" (click)="closeSidebar()">
+				<i class="fa-solid fa-user-plus"></i><span>New employee</span>
+			</a>
+		</nav>
+
+		<div class="sidebar-footer">
+			<button type="button" class="logout-button" (click)="logout()">
+				<i class="fa-solid fa-arrow-right-from-bracket"></i><span>Sign out</span>
+			</button>
+		</div>
+	</aside>
+
+	<button type="button" class="sidebar-overlay" aria-label="Close navigation" (click)="closeSidebar()"></button>
+
+	<div class="main-column">
+		<header class="topbar">
+			<button type="button" class="menu-button" aria-label="Toggle navigation" (click)="toggleSidebar()">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+			<div class="topbar-title">
+				<span class="eyebrow">Operations</span>
+				<span class="page-title">Admin dashboard</span>
+			</div>
+
+			<div class="topbar-actions">
+				<button type="button" class="theme-toggle" (click)="themeService.toggle()" [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+					<i class="fa-solid" [class.fa-sun]="themeService.theme() === 'dark'" [class.fa-moon]="themeService.theme() === 'light'"></i>
+				</button>
+				<div class="topbar-status"><span class="status-dot"></span> Online</div>
+			</div>
+		</header>
+
+		<main class="page-content">
+			<router-outlet></router-outlet>
+		</main>
+	</div>
+</div>
