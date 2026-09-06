@@ -51,6 +51,9 @@ appsettings.*.local.json
 # Claude Code local (per-machine) settings
 .claude/settings.local.json
 
+# Claude Code project instructions (local only)
+CLAUDE.md
+
 # ---------------------------------------------
 # OS files
 # ---------------------------------------------
